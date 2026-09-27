@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PIMS — POGA International Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <header class="header">
+        <div class="brand">PIMS</div>
+        <h1>POGA International Management System</h1>
+        <p>Member Registration</p>
+      </header>
+
+      <form id="registrationForm" novalidate>
+        <div class="field">
+          <label for="fullName">Full Name <span>*</span></label>
+          <input id="fullName" name="fullName" type="text" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <label for="passportNumber">Passport Number <span>*</span></label>
+          <input id="passportNumber" name="passportNumber" type="text" autocomplete="off" required>
+        </div>
+
+        <div class="field">
+          <label for="birthday">Birthday <span>*</span></label>
+          <input id="birthday" name="birthday" type="date" required>
+        </div>
+
+        <div class="field">
+          <label for="countryId">Country / Location of Work Abroad <span>*</span></label>
+          <select id="countryId" name="countryId" required>
+            <option value="">Loading locations...</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="philippineAddress">Philippine Address <span>*</span></label>
+          <textarea id="philippineAddress" name="philippineAddress" rows="3" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="contactNumber">Contact Number <span>*</span></label>
+          <input id="contactNumber" name="contactNumber" type="tel" autocomplete="tel" required>
+        </div>
+
+        <h2>Emergency Contact</h2>
+
+        <div class="field">
+          <label for="emergencyContactPerson">Emergency Contact Person <span>*</span></label>
+          <input id="emergencyContactPerson" name="emergencyContactPerson" type="text" required>
+        </div>
+
+        <div class="field">
+          <label for="emergencyContactNumber">Emergency Contact Number <span>*</span></label>
+          <input id="emergencyContactNumber" name="emergencyContactNumber" type="tel" required>
+        </div>
+
+        <div class="field">
+          <label for="memberPhoto">Member Photo <span>*</span></label>
+          <input id="memberPhoto" name="memberPhoto" type="file"
+                 accept="image/jpeg,image/png,image/webp" required>
+          <small>Accepted: JPG, PNG, or WebP. Maximum 5 MB.</small>
+        </div>
+
+        <div id="message" class="message" role="alert" aria-live="polite"></div>
+
+        <button id="submitButton" type="submit">Submit Registration</button>
+      </form>
+
+      <div id="successPanel" class="success-panel" hidden>
+        <h2>Registration Successful</h2>
+        <p>Thank you for registering with POGA International.</p>
+        <button id="registerAnother" type="button">Register Another Member</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>
