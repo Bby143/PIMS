@@ -2,72 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>PIMS — POGA International Management System</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <link rel="stylesheet" href="style.css">
+  <title>PIMS — Member Registration</title>
+
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
   <main class="page">
 
-    <section class="card">
+    <!-- HEADER -->
+    <header class="brand">
 
-      <!-- BRANDING -->
-      <header class="header">
+      <img
+        src="./poga-logo.jpg"
+        alt="POGA Logo"
+        class="poga-logo"
+      >
 
-        <div class="logo-wrap">
-          <img
-            src="poga-logo.jpg"
-            class="logo"
-            alt="POGA Logo"
-          >
-        </div>
+      <div class="organization">
+        PAGADIANON OFW GLOBAL ASSOCIATION
+      </div>
 
-        <div class="organization">
-          PAGADIANON OFW GLOBAL ASSOCIATION
-        </div>
+      <div class="pims">
+        PIMS
+      </div>
 
-        <div class="brand">
-          PIMS
-        </div>
+      <div class="system-name">
+        POGA International Management System
+      </div>
 
-        <h1>
-          POGA International Management System
-        </h1>
+      <div class="registration-title">
+        Member Registration
+      </div>
 
-        <div class="header-divider"></div>
-
-        <p>
-          Member Registration
-        </p>
-
-      </header>
+    </header>
 
 
-      <!-- REGISTRATION FORM -->
+    <!-- FORM -->
+    <form id="registrationForm" class="registration-card">
 
-      <form id="registrationForm" novalidate>
+      <!-- MEMBER INFORMATION -->
+      <section>
 
-        <div class="section-title">
+        <h2>
           <span>01</span>
           Member Information
-        </div>
+        </h2>
 
 
         <div class="field">
 
           <label for="fullName">
-            Full Name <span>*</span>
+            Full Name <b>*</b>
           </label>
 
           <input
-            id="fullName"
-            name="fullName"
             type="text"
-            autocomplete="name"
+            id="fullName"
             placeholder="Enter full name"
             required
           >
@@ -78,14 +76,12 @@
         <div class="field">
 
           <label for="passportNumber">
-            Passport Number <span>*</span>
+            Passport Number <b>*</b>
           </label>
 
           <input
-            id="passportNumber"
-            name="passportNumber"
             type="text"
-            autocomplete="off"
+            id="passportNumber"
             placeholder="Enter passport number"
             required
           >
@@ -96,13 +92,12 @@
         <div class="field">
 
           <label for="birthday">
-            Birthday <span>*</span>
+            Birthday <b>*</b>
           </label>
 
           <input
-            id="birthday"
-            name="birthday"
             type="date"
+            id="birthday"
             required
           >
 
@@ -112,19 +107,16 @@
         <div class="field">
 
           <label for="countryId">
-            Country / Location of Work Abroad <span>*</span>
+            Country / Location of Work Abroad <b>*</b>
           </label>
 
           <select
             id="countryId"
-            name="countryId"
             required
           >
-
             <option value="">
-              Loading locations...
+              Select your location
             </option>
-
           </select>
 
         </div>
@@ -133,13 +125,11 @@
         <div class="field">
 
           <label for="philippineAddress">
-            Philippine Address <span>*</span>
+            Philippine Address <b>*</b>
           </label>
 
           <textarea
             id="philippineAddress"
-            name="philippineAddress"
-            rows="3"
             placeholder="Enter complete Philippine address"
             required
           ></textarea>
@@ -150,39 +140,39 @@
         <div class="field">
 
           <label for="contactNumber">
-            Contact Number <span>*</span>
+            Contact Number <b>*</b>
           </label>
 
           <input
-            id="contactNumber"
-            name="contactNumber"
             type="tel"
-            autocomplete="tel"
+            id="contactNumber"
             placeholder="Enter contact number"
             required
           >
 
         </div>
 
+      </section>
 
-        <!-- EMERGENCY CONTACT -->
 
-        <div class="section-title emergency-title">
+      <!-- EMERGENCY CONTACT -->
+      <section>
+
+        <h2>
           <span>02</span>
           Emergency Contact
-        </div>
+        </h2>
 
 
         <div class="field">
 
           <label for="emergencyContactPerson">
-            Emergency Contact Person <span>*</span>
+            Emergency Contact Person <b>*</b>
           </label>
 
           <input
-            id="emergencyContactPerson"
-            name="emergencyContactPerson"
             type="text"
+            id="emergencyContactPerson"
             placeholder="Enter emergency contact person"
             required
           >
@@ -193,126 +183,121 @@
         <div class="field">
 
           <label for="emergencyContactNumber">
-            Emergency Contact Number <span>*</span>
+            Emergency Contact Number <b>*</b>
           </label>
 
           <input
-            id="emergencyContactNumber"
-            name="emergencyContactNumber"
             type="tel"
+            id="emergencyContactNumber"
             placeholder="Enter emergency contact number"
             required
           >
 
         </div>
 
+      </section>
 
-        <!-- PHOTO -->
 
-        <div class="section-title photo-title">
+      <!-- PHOTO -->
+      <section>
+
+        <h2>
           <span>03</span>
           Member Photo
-        </div>
+        </h2>
 
 
         <div class="field">
 
           <label for="memberPhoto">
-            Upload Member Photo <span>*</span>
+            Upload Member Photo <b>*</b>
           </label>
 
           <input
-            id="memberPhoto"
-            name="memberPhoto"
             type="file"
+            id="memberPhoto"
             accept="image/jpeg,image/png,image/webp"
             required
           >
 
-          <small>
+          <div class="photo-note">
             Accepted: JPG, PNG, or WebP. Maximum 5 MB.
-          </small>
+          </div>
 
         </div>
 
-
-        <div
-          id="message"
-          class="message"
-          role="alert"
-          aria-live="polite"
-        ></div>
+      </section>
 
 
-        <button
-          id="submitButton"
-          type="submit"
-          class="submit-button"
-        >
-          Submit Registration
-        </button>
-
-
-        <p class="privacy-note">
-          Your information will be securely submitted to
-          POGA International Management System.
-        </p>
-
-      </form>
-
-
-      <!-- SUCCESS -->
-
+      <!-- MESSAGE -->
       <div
-        id="successPanel"
-        class="success-panel"
-        hidden
+        id="message"
+        class="message"
+      ></div>
+
+
+      <!-- SUBMIT -->
+      <button
+        type="submit"
+        id="submitButton"
       >
+        Submit Registration
+      </button>
 
-        <div class="success-icon">
-          ✓
-        </div>
 
-        <h2>
-          Registration Successful
-        </h2>
-
-        <p>
-          Thank you for registering with
-          <strong>Pagadianon OFW Global Association.</strong>
-        </p>
-
-        <button
-          id="registerAnother"
-          type="button"
-          class="another-button"
-        >
-          Register Another Member
-        </button>
-
+      <!-- PRIVACY -->
+      <div class="privacy">
+        Your information will be securely submitted to
+        POGA International Management System.
       </div>
 
+    </form>
 
-      <footer class="footer">
 
-        <strong>
-          PAGADIANON OFW GLOBAL ASSOCIATION
-        </strong>
+    <!-- SUCCESS -->
+    <div
+      id="successPanel"
+      class="success-card"
+      hidden
+    >
 
-        <span>
-          PIMS — POGA International Management System
-        </span>
+      <div class="success-icon">
+        ✓
+      </div>
 
-      </footer>
+      <h2>
+        Registration Successful
+      </h2>
 
-    </section>
+      <p>
+        Your registration has been successfully submitted
+        to POGA International Management System.
+      </p>
+
+      <button
+        type="button"
+        id="registerAnother"
+      >
+        Register Another Member
+      </button>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+      PAGADIANON OFW GLOBAL ASSOCIATION<br>
+      PIMS — POGA International Management System
+    </footer>
 
   </main>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+  ></script>
 
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
 
 </body>
 </html>
