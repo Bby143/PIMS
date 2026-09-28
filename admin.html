@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PIMS — POGA International Management System</title>
+  <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+
+<div id="loginView" class="page">
+  <div class="card login-card">
+    <div class="login-brand">
+      <img src="poga-logo.jpg" class="login-logo" alt="POGA Logo">
+      <div class="brand-name">PAGADIANON OFW GLOBAL ASSOCIATION</div>
+      <h1>PIMS</h1>
+      <p class="system-name">POGA International Management System</p>
+      <span class="portal-label">ADMIN PORTAL</span>
+    </div>
+
+    <form id="loginForm">
+      <label>
+        Email
+        <input id="email" type="email" required autocomplete="email" placeholder="Enter your email">
+      </label>
+      <label>
+        Password
+        <input id="password" type="password" required autocomplete="current-password" placeholder="Enter your password">
+      </label>
+      <button type="submit" class="full-btn">Sign in</button>
+      <p id="loginMessage" class="message"></p>
+    </form>
+  </div>
+</div>
+
+<div id="dashboardView" class="hidden">
+
+  <header class="topbar">
+    <div class="brand">
+      <img src="poga-logo.jpg" class="brand-logo" alt="POGA Logo">
+      <div class="brand-text">
+        <div class="organization-name">PAGADIANON OFW GLOBAL ASSOCIATION</div>
+        <h1>PIMS</h1>
+        <span>POGA International Management System</span>
+      </div>
+    </div>
+    <button id="logoutBtn" class="secondary logout-btn" type="button">Logout</button>
+  </header>
+
+  <main class="container">
+
+    <section class="page-heading">
+      <div>
+        <span class="eyebrow">ADMINISTRATION</span>
+        <h2>Member Management</h2>
+        <p>Manage POGA international members and registration records.</p>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat card">
+        <div class="stat-icon">👥</div>
+        <div>
+          <strong id="totalCount">0</strong>
+          <span>Total Members</span>
+        </div>
+      </div>
+      <div class="stat card">
+        <div class="stat-icon">✓</div>
+        <div>
+          <strong id="activeCount">0</strong>
+          <span>Active Members</span>
+        </div>
+      </div>
+      <div class="stat card">
+        <div class="stat-icon">🌎</div>
+        <div>
+          <strong id="locationCount">0</strong>
+          <span>Locations</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card filters">
+      <div class="filter-title">
+        <strong>Find Members</strong>
+        <span>Search or filter member records</span>
+      </div>
+
+      <div class="filter-controls">
+        <div class="search-box">
+          <span class="search-icon">🔎</span>
+          <input id="searchInput" type="search" placeholder="Search name or passport number">
+        </div>
+
+        <select id="locationFilter">
+          <option value="">All Locations</option>
+        </select>
+
+        <button id="refreshBtn" class="secondary" type="button">↻ Refresh</button>
+        <button id="printCountryBtn" type="button">🖨️ Print Country Members</button>
+      </div>
+    </section>
+
+    <section class="card country-report-card">
+      <div class="country-report-header">
+        <div>
+          <span class="eyebrow">COUNTRY MEMBERS RECORDS</span>
+          <h3>Selected Country Members</h3>
+          <p id="countryReportDescription">Select a country above to view its members.</p>
+        </div>
+
+        <div class="country-report-total">
+          <strong id="countryMemberCount">0</strong>
+          <span>Members</span>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="country-report-table">
+          <thead>
+            <tr>
+              <th>Full Name</th>
+              <th>Passport #</th>
+              <th>Address sa Pinas</th>
+              <th>Contact #</th>
+            </tr>
+          </thead>
+          <tbody id="countryMembersBody">
+            <tr>
+              <td colspan="4" class="empty">Select a country to view members.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p id="countryReportMessage" class="message"></p>
+    </section>
+
+    <section class="card table-card">
+      <div class="table-header">
+        <div>
+          <h3>Member Records</h3>
+          <p>Registered POGA members</p>
+        </div>
+        <div class="table-badge">PIMS</div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Photo</th>
+              <th>Full Name</th>
+              <th>Location</th>
+              <th>Passport</th>
+              <th>Status</th>
+              <th>Date Registered</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="membersBody"></tbody>
+        </table>
+      </div>
+
+      <p id="tableMessage" class="message"></p>
+    </section>
+
+  </main>
+</div>
+
+<div id="detailModal" class="modal hidden">
+  <div class="modal-card">
+    <button class="close" data-close="detailModal" type="button">×</button>
+    <div class="modal-title">
+      <span class="eyebrow">MEMBER RECORD</span>
+      <h2>Member Details</h2>
+    </div>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<div id="editModal" class="modal hidden">
+  <div class="modal-card">
+    <button class="close" data-close="editModal" type="button">×</button>
+    <div class="modal-title">
+      <span class="eyebrow">MEMBER MANAGEMENT</span>
+      <h2>Edit Member</h2>
+    </div>
+
+    <form id="editForm">
+      <input id="editId" type="hidden">
+
+      <label>
+        Full Name
+        <input id="editFullName" required>
+      </label>
+
+      <label>
+        Passport Number
+        <input id="editPassport" required>
+      </label>
+
+      <label>
+        Birthday
+        <input id="editBirthday" type="date" required>
+      </label>
+
+      <label>
+        Country / Location
+        <select id="editCountry" required></select>
+      </label>
+
+      <label>
+        Philippine Address
+        <textarea id="editAddress" required></textarea>
+      </label>
+
+      <label>
+        Contact Number
+        <input id="editContact" required>
+      </label>
+
+      <label>
+        Emergency Contact Person
+        <input id="editEmergencyPerson" required>
+      </label>
+
+      <label>
+        Emergency Contact Number
+        <input id="editEmergencyNumber" required>
+      </label>
+
+      <label>
+        Membership Status
+        <select id="editStatus">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </label>
+
+      <button type="submit" class="save-btn">Save Changes</button>
+      <p id="editMessage" class="message"></p>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin.js"></script>
+</body>
+</html>
